@@ -4,15 +4,15 @@ import type { IHelloWorldProps } from './IHelloWorldProps';
 import { escape } from '@microsoft/sp-lodash-subset';
 import welcomeDark from '../assets/welcome-dark.png';
 import welcomeLight from '../assets/welcome-light.png';
+import NewButton from './Button'
 
-export default class HelloWorld extends React.Component<IHelloWorldProps> {
-  public render(): React.ReactElement<IHelloWorldProps> {
+export default function HelloWorld (props: IHelloWorldProps) {
     const {
       description,
       isDarkTheme,
       environmentMessage,
       userDisplayName
-    } = this.props;
+    } = props;
 
     return (
       <section className={`${styles.helloWorld}`}>
@@ -28,6 +28,7 @@ export default class HelloWorld extends React.Component<IHelloWorldProps> {
             The SharePoint Framework (SPFx) is a extensibility model for Microsoft Viva, Microsoft Teams and SharePoint. It&#39;s the easiest way to extend Microsoft 365 with automatic Single Sign On, automatic hosting and industry standard tooling.
           </p>
           <h4>Learn more about SPFx development:</h4>
+          <NewButton/>
           <ul className={styles.links}>
             <li><a href="https://aka.ms/spfx" target="_blank" rel="noreferrer">SharePoint Framework Overview</a></li>
             <li><a href="https://aka.ms/spfx-yeoman-graph" target="_blank" rel="noreferrer">Use Microsoft Graph in your solution</a></li>
@@ -41,4 +42,4 @@ export default class HelloWorld extends React.Component<IHelloWorldProps> {
       </section>
     );
   }
-}
+
