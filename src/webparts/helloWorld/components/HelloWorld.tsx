@@ -4,7 +4,7 @@ import type { IHelloWorldProps } from "./IHelloWorldProps";
 import { escape } from "@microsoft/sp-lodash-subset";
 import welcomeDark from "../assets/welcome-dark.png";
 import welcomeLight from "../assets/welcome-light.png";
-import { useMockData } from '../hooks/useMockData';
+import { useMockData } from "../hooks/useMockData";
 
 import NewButton from "./Button";
 
@@ -14,8 +14,29 @@ export default function HelloWorld(props: IHelloWorldProps) {
 
   const { data, error, loading } = useMockData(props.context);
 
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>An error has occurred.</p>;
+  }
+
   return (
     <section className={`${styles.helloWorld}`}>
+      <div className={styles.disasterList}>
+        {data?.DisasterDeclarationsSummaries?.map((disaster: any) => (
+          <div key={disaster.disasterNumber} className={styles.disasterCard}>
+            <p className={styles.disasterNumber}>
+              Disaster Number: {disaster.disasterNumber}
+            </p>
+
+            <p>Incident Type: {disaster.incidentType}</p>
+            <p>Declaration Area: {disaster.designatedArea}</p>
+            <p>Declaration Date: {disaster.declarationDate}</p>
+          </div>
+        ))}
+      </div>
       <div className={styles.welcome}>
         <img
           alt=""

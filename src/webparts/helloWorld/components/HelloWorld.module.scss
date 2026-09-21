@@ -18,12 +18,53 @@
   a {
     text-decoration: none;
     color: "[theme:link, default:#03787c]";
-    color: var(--link); // note: CSS Custom Properties support is limited to modern browsers only
+    color: var(
+      --link
+    ); // note: CSS Custom Properties support is limited to modern browsers only
 
     &:hover {
       text-decoration: underline;
       color: "[theme:linkHovered, default: #014446]";
-      color: var(--linkHovered); // note: CSS Custom Properties support is limited to modern browsers only
+      color: var(
+        --linkHovered
+      ); // note: CSS Custom Properties support is limited to modern browsers only
     }
   }
+}
+
+.disasterList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.disasterCard {
+  padding: 16px;
+  border: 1px solid #d1d1d1;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+
+  p {
+    margin: 6px 0;
+  }
+}
+
+.disasterNumber {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.loading {
+  padding: 16px;
+  font-size: 18px;
+}
+
+.error {
+  padding: 16px;
+  font-size: 18px;
+  color: #b10e1e;
+  background-color: #fde7e9;
+  border-radius: 8px;
 }
