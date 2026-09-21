@@ -28,7 +28,8 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
         description: this.properties.description,
         isDarkTheme: this._isDarkTheme,
         environmentMessage: this._environmentMessage,
-        userDisplayName: this.context.pageContext.user.displayName
+        userDisplayName: this.context.pageContext.user.displayName,
+        context: this.context
       }
     );
 
