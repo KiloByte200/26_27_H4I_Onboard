@@ -9,6 +9,9 @@ function getDisasters(context) {
         return tslib_1.__generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
+                    if (Math.random() < 0.5) {
+                        throw new Error("Simulated Api Failure");
+                    }
                     url = "".concat(context.pageContext.web.absoluteUrl, "/_api/web/lists");
                     return [4 /*yield*/, context.spHttpClient.get(url, sp_http_1.SPHttpClient.configurations.v1)];
                 case 1:

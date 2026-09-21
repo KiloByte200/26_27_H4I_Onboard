@@ -4,23 +4,15 @@ import type { IHelloWorldProps } from "./IHelloWorldProps";
 import { escape } from "@microsoft/sp-lodash-subset";
 import welcomeDark from "../assets/welcome-dark.png";
 import welcomeLight from "../assets/welcome-light.png";
-import { useEffect } from "react";
+import { useMockData } from '../hooks/useMockData';
 
 import NewButton from "./Button";
-import { getDisasters } from "../../../../services";
 
 export default function HelloWorld(props: IHelloWorldProps) {
   const { description, isDarkTheme, environmentMessage, userDisplayName } =
     props;
 
-  useEffect(() => {
-    const loadDisasters = async (): Promise<void> => {
-      const data = await getDisasters(props.context);
-      console.log(data);
-    };
-
-    loadDisasters().catch(console.error);
-  }, [props.context]);
+  const { data, error, loading } = useMockData(props.context);
 
   return (
     <section className={`${styles.helloWorld}`}>
